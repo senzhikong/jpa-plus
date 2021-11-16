@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "szk.db.naming-strategy",
+      "type": "java.lang.String",
+      "description": "字段命名规则，默认使用当前名，可选值camel（驼峰）和underline（下划线）."
+    }
+  ]
+}
