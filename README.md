@@ -1,7 +1,8 @@
 # Spring Data JPA 增强组件
 在使用spring data jpa的过程中，一些复杂的查询和数据库方法都比较难实现
 因此参考了mybatis-plus，写了一套jpa的增强组件。
-##目录
+
+## 目录
 1. [源码下载](#source_code)
 2. [maven安装](#maven)
 3. [实体类](#entity)
@@ -13,7 +14,7 @@
 
 <div id="source_code"></div>
 
-###源码下载
+### 源码下载
 
 [Gitee地址：https://gitee.com/ZS-Tree/jpa-plus.git](https://gitee.com/ZS-Tree/jpa-plus.git)
 
@@ -21,7 +22,7 @@
 
 <div id="maven"></div>
 
-###Maven 安装
+### Maven 安装
 ```
 <dependency>
     <groupId>com.senzhikong</groupId>
@@ -31,7 +32,7 @@
 ```
 <div id="entity"></div>
 
-###实体类
+### 实体类
 ```
 @Table(name = "blog_note")
 public class BlogNote extends BaseEntity{
@@ -55,7 +56,7 @@ public class BlogNote extends BaseEntity{
 
 *<div id="config"></div>
 
-###配置参数
+### 配置参数
 ```
 szk.db.naming-strategy=camel
 #数据库映射规则，默认使用当前名，可选值camel（驼峰）和underline（下划线）
@@ -70,7 +71,7 @@ szk.db.naming-strategy=camel
 
 <div id="use"></div>
 
-###使用方式
+### 使用方式
 ```
         
         //新建查询  如果不需要分页，新建 QueryWrapper 即可
@@ -140,7 +141,7 @@ szk.db.naming-strategy=camel
 
 <div id="as_name"></div>
 
-###别名
+### 别名
 构造QueryWrapper和JoinWrapper时会为数据库表取一个别名，名称即为实体类的类名
 字段的默认别名就是实体类中的参数名
 例如
@@ -150,7 +151,7 @@ select BlogNote.createTime from blog_note as BlogNote
 
 <div id="wrapper_value"></div>
 
-###WrapperValue生成方式
+### WrapperValue生成方式
 ```
         
         //？代表参数，数量没有限制，按照顺序填充
@@ -175,7 +176,7 @@ select BlogNote.createTime from blog_note as BlogNote
 
 <div id="reference"></div>
 
-###案例参考
+### 案例参考
 组件中内置了Service，可以直接继承也可以复制到自己的service中去
 ```
 package com.senzhikong.db.sql.wrapper;
