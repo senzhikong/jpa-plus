@@ -6,7 +6,10 @@
 
     <groupId>com.senzhikong</groupId>
     <artifactId>jpa-plus</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
+    <url>https://github.com/senzhikong/jpa-plus</url>
+    <name>jpa-plus</name>
+    <description>spring data jpa扩展组件</description>
 
     <properties>
         <java.version>8</java.version>

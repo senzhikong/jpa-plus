@@ -194,31 +194,26 @@ public class WrapperBuilder {
     }
 
     public void buildSelect(StringBuilder sql, CacheTable cacheTable,
-            List<SelectWrapper> selects, List<Object> params) {
+            QueryWrapper<? extends Serializable> queryWrapper, List<Object> params) {
         sql.append("SELECT ");
-        if (selects == null || selects.isEmpty()) {
+        if (queryWrapper.isSelectEntity()) {
             sql.append(cacheTable.getAsName()).append(".* ");
             return;
         }
+        List<SelectWrapper> selects = queryWrapper.getSelects();
         for (int i = 0; i < selects.size(); i++) {
             SelectWrapper wrapper = selects.get(i);
-            SelectType wrapperType = wrapper.getSelectType();
             if (i > 0) {
                 sql.append(",");
             }
-            switch (wrapperType) {
-                case COLUMN:
-                    sql.append(wrapperValueToText(wrapper.getValueList().get(0), params));
-                    break;
-                case FUNCTION:
-                    sql.append(getFunctionWrapper(wrapper, params));
-                    break;
-                default:
-                    break;
-            }
+            WrapperValue wrapperValue = wrapper.getValueList().get(0);
+            sql.append(wrapperValueToText(wrapperValue, params));
             sql.append(" AS ");
             if (StringUtils.isNotEmpty(wrapper.getAsName())) {
                 sql.append(wrapper.getAsName());
+            } else if (wrapperValue.getType() == ValueType.FUNCTION) {
+                CacheColumn cacheColumn = wrapperParser.getColumn(wrapperValue.getFunction());
+                sql.append(cacheColumn.getFieldName());
             } else {
                 sql.append(SELECT_PREFIX);
                 sql.append(i);
@@ -341,7 +336,7 @@ public class WrapperBuilder {
     public String selectByWrapper(QueryWrapper<? extends Serializable> queryWrapper, List<Object> params) {
         StringBuilder sql = new StringBuilder();
         CacheTable cacheTable = wrapperParser.getTable(queryWrapper.getGenericsClass());
-        buildSelect(sql, cacheTable, queryWrapper.getSelects(), params);
+        buildSelect(sql, cacheTable, queryWrapper, params);
         buildFrom(sql, queryWrapper);
         buildJoin(sql, queryWrapper.getJoinWrappers(), params);
         buildWhere(sql, queryWrapper.getWrapperList(), params);

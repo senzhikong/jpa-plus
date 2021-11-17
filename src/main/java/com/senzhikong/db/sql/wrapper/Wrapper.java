@@ -14,18 +14,30 @@ import java.util.List;
 @Data
 public class Wrapper {
     protected Class<? extends Serializable> genericsClass;
-    private WrapperType type;
+    protected WrapperType type;
     private List<WrapperValue> valueList = new ArrayList<>();
     private Function function;
     private String functionName;
 
-    public static Wrapper functionWrapper(Function function, String functionName, WrapperValue... values) {
+    private static Wrapper func(Function function, String functionName, WrapperValue... values) {
         Wrapper wrapper = new Wrapper();
         wrapper.setType(WrapperType.FUNCTION);
         wrapper.setFunction(function);
         wrapper.setFunctionName(functionName);
         wrapper.setValueList(Arrays.asList(values));
         return wrapper;
+    }
+
+    public static Wrapper func(Function function, WrapperValue... values) {
+        return func(function, function.name(), values);
+    }
+
+    public static Wrapper func_custom(String function, WrapperValue... values) {
+        return func(Function.CUSTOMIZE, function, values);
+    }
+
+    public static Wrapper func_text(String function, WrapperValue... values) {
+        return func(Function.CUSTOMIZE_TEXT, function, values);
     }
 
     public static <S extends Serializable, R extends Serializable> WrapperValue col(ObjectFunction<S, R> function) {

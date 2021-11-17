@@ -5,9 +5,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Shu.zhou
@@ -21,14 +19,9 @@ public class QueryWrapper<T extends Serializable> extends ListWrapper {
     List<Wrapper> groupBys = new ArrayList<>();
     List<OrderByWrapper> orderBys = new ArrayList<>();
     private boolean distinct = false;
+    private boolean selectEntity = true;
 
     List<JoinWrapper> joinWrappers = new ArrayList<>();
-
-    public <R extends Serializable, S extends Serializable> WrapperValue value(ObjectFunction<S, R> func) {
-        WrapperValue wrapperValue = Wrapper.col(func);
-        wrapperValue.setFunctionClass(genericsClass);
-        return wrapperValue;
-    }
 
     public QueryWrapper(Class<T> clz) {
         super();
@@ -50,48 +43,19 @@ public class QueryWrapper<T extends Serializable> extends ListWrapper {
     }
 
 
-    public QueryWrapper<T> select(String key) {
+    public SelectWrapper select(String key) {
         return select(Wrapper.col(key));
     }
 
-    public <R extends Serializable, S extends Serializable> QueryWrapper<T> select(ObjectFunction<S, R> func) {
+    public <R extends Serializable, S extends Serializable> SelectWrapper select(ObjectFunction<S, R> func) {
         return select(Wrapper.col(func));
     }
 
-    public QueryWrapper<T> select(WrapperValue wrapperValue) {
+    public SelectWrapper select(WrapperValue wrapperValue) {
         SelectWrapper selectWrapper = new SelectWrapper();
-        selectWrapper.setSelectType(SelectType.COLUMN);
         selectWrapper.getValueList().add(wrapperValue);
         selects.add(selectWrapper);
-        return this;
-    }
-
-    @SafeVarargs
-    public final <R extends Serializable, S extends Serializable> QueryWrapper<T> selectFunc(Function function,
-            ObjectFunction<T, S>... func) {
-        List<WrapperValue> values = Arrays.stream(func).map(Wrapper::col).collect(Collectors.toList());
-        return selectFunc(function, null, values);
-    }
-
-    @SafeVarargs
-    public final <R extends Serializable, S extends Serializable> QueryWrapper<T> selectFunc(String functionName,
-            ObjectFunction<T, S>... func) {
-        List<WrapperValue> values = Arrays.stream(func).map(Wrapper::col).collect(Collectors.toList());
-        return selectFunc(Function.CUSTOMIZE, functionName, values);
-    }
-
-    public final QueryWrapper<T> selectFunc(String functionName, WrapperValue... values) {
-        return selectFunc(Function.CUSTOMIZE, functionName, Arrays.asList(values));
-    }
-
-    public final QueryWrapper<T> selectFunc(Function function, String functionName, List<WrapperValue> values) {
-        SelectWrapper selectWrapper = new SelectWrapper();
-        selectWrapper.setSelectType(SelectType.FUNCTION);
-        selectWrapper.setFunction(function);
-        selectWrapper.setFunctionName(functionName);
-        selectWrapper.getValueList().addAll(values);
-        selects.add(selectWrapper);
-        return this;
+        return selectWrapper;
     }
 
     public QueryWrapper<T> distinct(boolean distinct) {

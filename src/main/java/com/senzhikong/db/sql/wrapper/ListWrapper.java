@@ -38,9 +38,22 @@ public class ListWrapper extends Wrapper {
         return add(WrapperType.EQ, null, null, Wrapper.col(func1), Wrapper.val(value));
     }
 
+    public ListWrapper eq(WrapperValue val1, WrapperValue val2) {
+        return add(WrapperType.EQ, null, null, val1, val2);
+    }
+
     public <S extends Serializable, R extends Serializable> ListWrapper ne(ObjectFunction<S, R> func1,
             Object value) {
         return add(WrapperType.NOT_EQ, null, null, Wrapper.col(func1), Wrapper.val(value));
+    }
+
+    public <S extends Serializable, R extends Serializable, U extends Serializable, V extends Serializable> ListWrapper ne(
+            ObjectFunction<S, R> func1, ObjectFunction<U, V> func2) {
+        return add(WrapperType.NOT_EQ, null, null, Wrapper.col(func1), Wrapper.val(func2));
+    }
+
+    public ListWrapper ne(WrapperValue val1, WrapperValue val2) {
+        return add(WrapperType.NOT_EQ, null, null, val1, val2);
     }
 
     public <S extends Serializable, R extends Serializable> ListWrapper gt(ObjectFunction<S, R> func1,
@@ -48,9 +61,28 @@ public class ListWrapper extends Wrapper {
         return add(WrapperType.GT, null, null, Wrapper.col(func1), Wrapper.val(value));
     }
 
+
+    public <S extends Serializable, R extends Serializable, U extends Serializable, V extends Serializable> ListWrapper gt(
+            ObjectFunction<S, R> func1, ObjectFunction<U, V> func2) {
+        return add(WrapperType.GT, null, null, Wrapper.col(func1), Wrapper.val(func2));
+    }
+
+    public ListWrapper gt(WrapperValue val1, WrapperValue val2) {
+        return add(WrapperType.GT, null, null, val1, val2);
+    }
+
     public <S extends Serializable, R extends Serializable> ListWrapper lt(ObjectFunction<S, R> func1,
             Object value) {
         return add(WrapperType.LT, null, null, Wrapper.col(func1), Wrapper.val(value));
+    }
+
+    public <S extends Serializable, R extends Serializable, U extends Serializable, V extends Serializable> ListWrapper lt(
+            ObjectFunction<S, R> func1, ObjectFunction<U, V> func2) {
+        return add(WrapperType.LT, null, null, Wrapper.col(func1), Wrapper.val(func2));
+    }
+
+    public ListWrapper lt(WrapperValue val1, WrapperValue val2) {
+        return add(WrapperType.LT, null, null, val1, val2);
     }
 
     public <S extends Serializable, R extends Serializable> ListWrapper ge(ObjectFunction<S, R> func1,
@@ -58,9 +90,27 @@ public class ListWrapper extends Wrapper {
         return add(WrapperType.GE, null, null, Wrapper.col(func1), Wrapper.val(value));
     }
 
+    public <S extends Serializable, R extends Serializable, U extends Serializable, V extends Serializable> ListWrapper ge(
+            ObjectFunction<S, R> func1, ObjectFunction<U, V> func2) {
+        return add(WrapperType.GE, null, null, Wrapper.col(func1), Wrapper.val(func2));
+    }
+
+    public ListWrapper ge(WrapperValue val1, WrapperValue val2) {
+        return add(WrapperType.GE, null, null, val1, val2);
+    }
+
     public <S extends Serializable, R extends Serializable> ListWrapper le(ObjectFunction<S, R> func1,
             Object value) {
         return add(WrapperType.LE, null, null, Wrapper.col(func1), Wrapper.val(value));
+    }
+
+    public <S extends Serializable, R extends Serializable, U extends Serializable, V extends Serializable> ListWrapper le(
+            ObjectFunction<S, R> func1, ObjectFunction<U, V> func2) {
+        return add(WrapperType.LE, null, null, Wrapper.col(func1), Wrapper.val(func2));
+    }
+
+    public ListWrapper le(WrapperValue val1, WrapperValue val2) {
+        return add(WrapperType.LE, null, null, val1, val2);
     }
 
     public <S extends Serializable, R extends Serializable, K extends Serializable> ListWrapper in(
@@ -90,9 +140,19 @@ public class ListWrapper extends Wrapper {
         return add(WrapperType.LIKE, null, null, Wrapper.col(func1), Wrapper.val(value + "%"));
     }
 
+    public ListWrapper start(
+            WrapperValue val, String value) {
+        return add(WrapperType.LIKE, null, null, val, Wrapper.val(value + "%"));
+    }
+
     public <S extends Serializable, R extends Serializable> ListWrapper end(ObjectFunction<S, R> func1,
             String value) {
         return add(WrapperType.LIKE, null, null, Wrapper.col(func1), Wrapper.val("%" + value));
+    }
+
+    public ListWrapper end(
+            WrapperValue val, String value) {
+        return add(WrapperType.LIKE, null, null, val, Wrapper.val("%" + value));
     }
 
     public <S extends Serializable, R extends Serializable> ListWrapper like(ObjectFunction<S, R> func1,
@@ -101,12 +161,27 @@ public class ListWrapper extends Wrapper {
                 Wrapper.val("%" + value + "%"));
     }
 
+    public ListWrapper like(
+            WrapperValue val, String value) {
+        return add(WrapperType.LIKE, null, null, val, Wrapper.val("%" + value + "%"));
+    }
+
     public <S extends Serializable, R extends Serializable> ListWrapper is_null(ObjectFunction<S, R> func1) {
         return add(WrapperType.IS_NULL, null, null, Wrapper.col(func1));
     }
 
+    public ListWrapper is_null(
+            WrapperValue val) {
+        return add(WrapperType.IS_NULL, null, null, val);
+    }
+
     public <S extends Serializable, R extends Serializable> ListWrapper not_null(ObjectFunction<S, R> func1) {
         return add(WrapperType.NOT_NULL, null, null, Wrapper.col(func1));
+    }
+
+    public ListWrapper not_null(
+            WrapperValue val) {
+        return add(WrapperType.NOT_NULL, null, null, val);
     }
 
     public OrWrapper or() {
