@@ -54,7 +54,7 @@ public class BlogNote extends BaseEntity{
 ```
 对象属性不能写到父类中，否则使用lambda时回出错（BlogNote::getId）
 
-*<div id="config"></div>
+<div id="config"></div>
 
 ### 配置参数
 ```
