@@ -175,7 +175,7 @@ public class WrapperBuilder {
                 sql.append(wrapper.getFunctionName()).append("(").append(functionParams).append(")");
                 break;
             case CUSTOMIZE_TEXT:
-                String functionText = wrapper.getFunctionName();
+                String functionText = wrapper.getFunctionName()+" ";
                 String[] arr = functionText.split("\\?");
                 if (arr.length != valueTexts.size() + 1) {
                     throw new RuntimeException(
