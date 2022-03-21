@@ -192,8 +192,8 @@ public class ListWrapper extends Wrapper {
 
     public <S extends Serializable, R extends Serializable> ListWrapper jsonArrayContains(ObjectFunction<S, R> func1,
             Object value) {
-        return add(WrapperType.IS_NULL, Function.CUSTOMIZE, "JSON_CONTAINS", Wrapper.col(func1),
-                Wrapper.val(value));
+        return add(WrapperType.FUNCTION, Function.CUSTOMIZE, "JSON_CONTAINS", Wrapper.col(func1),
+                Wrapper.val(value.toString()));
     }
 
     public AndWrapper and() {
