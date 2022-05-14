@@ -22,10 +22,8 @@
         <!-- Spring -->
         <spring.version>5.2.15.RELEASE</spring.version>
         <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
-
         <slf4j.version>1.7.30</slf4j.version>
         <fastjson.version>1.2.78</fastjson.version>
-
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <lombok.version>1.18.22</lombok.version>
     </properties>
