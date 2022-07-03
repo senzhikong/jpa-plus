@@ -1,5 +1,23 @@
 package com.senzhikong.db.sql.wrapper;
 
+/**
+ * @author shu
+ */
 public enum ValueType {
-    FUNCTION, COLUMN, VALUE, WRAPPER
+    /**
+     * 方法
+     */
+    FUNCTION,
+    /**
+     * 列
+     */
+    COLUMN,
+    /**
+     * 值
+     */
+    VALUE,
+    /**
+     * 查询器
+     */
+    WRAPPER
 }

@@ -5,6 +5,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 
+/**
+ * @author shu
+ */
 @Data
 public class CacheTable {
     private String name;

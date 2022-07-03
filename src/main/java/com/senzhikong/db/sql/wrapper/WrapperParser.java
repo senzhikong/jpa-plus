@@ -17,11 +17,14 @@ import java.security.AccessController;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author shu
+ */
 @Component
 public class WrapperParser {
     @Resource
     private WrapperConfig wrapperConfig;
-    private static final Map<String, CacheTable> cacheTableMap = new HashMap<>();
+    private static final Map<String, CacheTable> CACHE_TABLE_MAP = new HashMap<>();
 
     public CacheColumn getColumn(Class<?> clz, String field) {
         CacheColumn cacheColumn = getTable(clz).getColumns().get(field);
@@ -31,8 +34,10 @@ public class WrapperParser {
         return cacheColumn;
     }
 
+    private static final String MARK_CHAR = "`";
+
     public CacheTable getTable(Class<?> clz) {
-        CacheTable cacheTable = cacheTableMap.get(clz.getName());
+        CacheTable cacheTable = CACHE_TABLE_MAP.get(clz.getName());
         if (cacheTable != null) {
             return cacheTable;
         }
@@ -54,7 +59,7 @@ public class WrapperParser {
                 cacheTable.setCatalog(catalog);
             }
             if (StringUtils.isNotEmpty(schema)) {
-                if (schema.startsWith("`")) {
+                if (schema.startsWith(MARK_CHAR)) {
                     schema = schema.substring(1, schema.length() - 1);
                 }
                 cacheTable.setSchema(schema);
@@ -67,9 +72,9 @@ public class WrapperParser {
             }
         }
         cacheTable.setName(tableName);
-        cacheTable.setColumns(new HashMap<>());
+        cacheTable.setColumns(new HashMap<>(8));
         parseTableColumns(clz, cacheTable);
-        cacheTableMap.put(cacheTable.getFullClass(), cacheTable);
+        CACHE_TABLE_MAP.put(cacheTable.getFullClass(), cacheTable);
         return cacheTable;
     }
 

@@ -9,6 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * @author shu
+ */
 @Getter
 @Setter
 public class ListWrapper extends Wrapper {
@@ -124,13 +127,13 @@ public class ListWrapper extends Wrapper {
         return add(WrapperType.IN, null, null, Wrapper.col(func1), Wrapper.val(value));
     }
 
-    public <S extends Serializable, R extends Serializable, K extends Serializable> ListWrapper not_in(
+    public <S extends Serializable, R extends Serializable, K extends Serializable> ListWrapper notIn(
             ObjectFunction<S, R> func1,
             Collection<K> value) {
         return add(WrapperType.NOT_IN, null, null, Wrapper.col(func1), Wrapper.val(value));
     }
 
-    public <S extends Serializable, R extends Serializable> ListWrapper not_in(ObjectFunction<S, R> func1,
+    public <S extends Serializable, R extends Serializable> ListWrapper notIn(ObjectFunction<S, R> func1,
             Object[] value) {
         return add(WrapperType.NOT_IN, null, null, Wrapper.col(func1), Wrapper.val(value));
     }
@@ -166,20 +169,20 @@ public class ListWrapper extends Wrapper {
         return add(WrapperType.LIKE, null, null, val, Wrapper.val("%" + value + "%"));
     }
 
-    public <S extends Serializable, R extends Serializable> ListWrapper is_null(ObjectFunction<S, R> func1) {
+    public <S extends Serializable, R extends Serializable> ListWrapper isNull(ObjectFunction<S, R> func1) {
         return add(WrapperType.IS_NULL, null, null, Wrapper.col(func1));
     }
 
-    public ListWrapper is_null(
+    public ListWrapper isNull(
             WrapperValue val) {
         return add(WrapperType.IS_NULL, null, null, val);
     }
 
-    public <S extends Serializable, R extends Serializable> ListWrapper not_null(ObjectFunction<S, R> func1) {
+    public <S extends Serializable, R extends Serializable> ListWrapper notNull(ObjectFunction<S, R> func1) {
         return add(WrapperType.NOT_NULL, null, null, Wrapper.col(func1));
     }
 
-    public ListWrapper not_null(
+    public ListWrapper notNull(
             WrapperValue val) {
         return add(WrapperType.NOT_NULL, null, null, val);
     }

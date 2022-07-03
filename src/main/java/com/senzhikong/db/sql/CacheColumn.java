@@ -2,6 +2,9 @@ package com.senzhikong.db.sql;
 
 import lombok.Data;
 
+/**
+ * @author shu
+ */
 @Data
 public class CacheColumn {
     private String fieldName;

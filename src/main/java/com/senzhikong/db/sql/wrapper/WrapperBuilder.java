@@ -12,6 +12,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author shu
+ */
 @Component
 public class WrapperBuilder {
     public static final String SELECT_PREFIX = "select_";

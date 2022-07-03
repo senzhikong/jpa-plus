@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
+/**
+ * @author shu
+ */
 @Getter
 @Setter
 public class OrderByWrapper  extends Wrapper {

@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author shu
+ */
 @Data
 public class WrapperValue {
     private Class<? extends Serializable> functionClass;

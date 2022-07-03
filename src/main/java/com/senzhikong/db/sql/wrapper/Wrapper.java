@@ -32,11 +32,11 @@ public class Wrapper {
         return func(function, function.name(), values);
     }
 
-    public static Wrapper func_custom(String function, WrapperValue... values) {
+    public static Wrapper funcCustom(String function, WrapperValue... values) {
         return func(Function.CUSTOMIZE, function, values);
     }
 
-    public static Wrapper func_text(String function, WrapperValue... values) {
+    public static Wrapper funcText(String function, WrapperValue... values) {
         return func(Function.CUSTOMIZE_TEXT, function, values);
     }
 

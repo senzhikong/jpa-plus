@@ -1,5 +1,18 @@
 package com.senzhikong.db.sql.wrapper;
 
+/**
+ * @author shu
+ */
+
 public enum OrderByType {
-    ASC, DESC
+
+    /**
+     * 正序
+     */
+    ASC,
+
+    /**
+     * 倒序
+     */
+    DESC
 }
