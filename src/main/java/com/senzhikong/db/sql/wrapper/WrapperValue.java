@@ -25,7 +25,11 @@ public class WrapperValue {
         return wrapperValue;
     }
 
-
+    /**
+     * 数据库列
+     * @param column 列名
+     * @return 值
+     */
     public static WrapperValue col(String column) {
         WrapperValue wrapperValue = new WrapperValue();
         wrapperValue.setType(ValueType.COLUMN);
@@ -33,6 +37,11 @@ public class WrapperValue {
         return wrapperValue;
     }
 
+    /**
+     * 固定值
+     * @param value 固定值
+     * @return 值
+     */
     public static WrapperValue val(Object value) {
         WrapperValue wrapperValue = new WrapperValue();
         wrapperValue.setType(ValueType.VALUE);
