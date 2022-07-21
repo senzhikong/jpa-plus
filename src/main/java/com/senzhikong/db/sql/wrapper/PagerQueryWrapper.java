@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * 分页查询
+ *
  * @author Shu.zhou
  */
 @Getter

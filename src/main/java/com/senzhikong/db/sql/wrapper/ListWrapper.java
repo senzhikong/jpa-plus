@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
+ * 多条件查询
  * @author shu
  */
 @Getter

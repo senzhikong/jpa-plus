@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 基础查询
+ *
  * @author Shu.zhou
  * @date 2018年10月24日下午3:10:01
  */

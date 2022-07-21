@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 基础构造器
+ *
  * @author Shu.zhou
  * @date 2018年9月24日下午5:00:37
  */

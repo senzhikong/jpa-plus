@@ -1,9 +1,9 @@
 package com.senzhikong.db.sql.wrapper;
 
 /**
+ * 关联类型
  * @author shu
  */
-
 public enum JoinType {
     /**
      * 左连接

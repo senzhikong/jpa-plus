@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * wrapper转sql
  * @author shu
  */
 @Component

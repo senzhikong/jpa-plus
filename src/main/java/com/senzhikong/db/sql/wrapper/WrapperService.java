@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 基础服务
  * @author Shu.zhou
  * @date 2018年9月27日下午3:37:13
  */

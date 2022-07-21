@@ -1,6 +1,7 @@
 package com.senzhikong.db.sql.wrapper;
 
 /**
+ * 参数类型
  * @author shu
  */
 public enum ValueType {

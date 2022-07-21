@@ -6,6 +6,7 @@ import lombok.Setter;
 import java.io.Serializable;
 
 /**
+ * 关联查询
  * @author shu
  */
 @Getter
