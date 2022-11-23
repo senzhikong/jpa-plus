@@ -1,6 +1,7 @@
 package com.senzhikong.db.sql.wrapper;
 
 /**
+ * 内置方法
  * @author shu
  */
 

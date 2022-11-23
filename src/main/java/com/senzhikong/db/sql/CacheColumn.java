@@ -3,6 +3,7 @@ package com.senzhikong.db.sql;
 import lombok.Data;
 
 /**
+ * 数据库表列结构串串
  * @author shu
  */
 @Data

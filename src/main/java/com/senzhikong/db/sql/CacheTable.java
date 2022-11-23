@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Map;
 
 /**
+ * 数据库表结构换成
  * @author shu
  */
 @Data
