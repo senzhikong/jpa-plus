@@ -6,9 +6,9 @@ import com.senzhikong.db.sql.WrapperConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
-import javax.persistence.Column;
-import javax.persistence.Table;
+import jakarta.annotation.Resource;
+import jakarta.persistence.Column;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.lang.invoke.SerializedLambda;
 import java.lang.reflect.Field;
